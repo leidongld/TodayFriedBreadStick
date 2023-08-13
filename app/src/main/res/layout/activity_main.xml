@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/vp_home"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/ctl_home"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.flyco.tablayout.CommonTabLayout
+        android:id="@+id/ctl_home"
+        android:layout_width="0dp"
+        android:layout_height="54dp"
+        android:background="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:tl_iconHeight="24dp"
+        app:tl_iconWidth="24dp"
+        app:tl_indicator_height="0dp"
+        app:tl_textBold="SELECT"
+        app:tl_textSelectColor="@color/c_E6645F"
+        app:tl_textUnselectColor="@color/c_505050"
+        app:tl_textsize="12sp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
