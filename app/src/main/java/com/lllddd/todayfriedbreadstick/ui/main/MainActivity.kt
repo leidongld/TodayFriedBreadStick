@@ -1,5 +1,6 @@
 package com.lllddd.todayfriedbreadstick.ui.main
 
+import android.bluetooth.BluetoothAdapter
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.viewpager.widget.ViewPager
@@ -38,7 +39,8 @@ class MainActivity : BaseActivity<MainView, MainPresenter>(), MainView {
     }
 
     override fun doBusiness() {
-
+        BluetoothAdapter.getDefaultAdapter()
+        Toast.makeText(this, "hahahaha", Toast.LENGTH_SHORT).show()
     }
 
     override fun getLayoutId(): Int {

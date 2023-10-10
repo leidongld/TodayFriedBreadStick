@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.todayfriedbreadstick.R
 import com.lllddd.todayfriedbreadstick.ui.main.model.BannerBean
 
@@ -28,7 +29,8 @@ class FoodsBannerAdapter(context: Context, banners: List<BannerBean>) :
             return
         }
 
-        Glide.with(mContext).load(mBanners[position]).into(holder.mImgFood)
+        Glide.with(mContext).load(mBanners[position]).placeholder(R.drawable.picture_food)
+            .into(holder.mImgFood)
     }
 
     override fun getItemCount(): Int {

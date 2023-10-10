@@ -8,10 +8,15 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.example.todayfriedbreadstick.R
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.lllddd.todayfriedbreadstick.ui.main.adapters.FoodsBannerAdapter
+import com.lllddd.todayfriedbreadstick.ui.main.adapters.ProductsAdapter
+import com.lllddd.todayfriedbreadstick.ui.main.model.HomeFragDataBean
+import com.lllddd.todayfriedbreadstick.ui.utils.AssetsUtils
+import com.lllddd.todayfriedbreadstick.ui.utils.GsonUtils
 
 /**
  * author: lllddd
@@ -39,11 +44,46 @@ class HomeFragment : Fragment() {
      */
     private lateinit var mViewPagerBanner: ViewPager2
 
-    private lateinit var mFoodsBannerAdapter : FoodsBannerAdapter
+    /**
+     * Foods banner adapter
+     */
+    private lateinit var mFoodsBannerAdapter: FoodsBannerAdapter
+
+    /**
+     * Recycler view of products
+     */
+    private lateinit var mRcvProducts : RecyclerView
+
+    /**
+     * Products adapter
+     */
+    private lateinit var mProductsAdapter : ProductsAdapter
+
+    /**
+     * The total data of home fragment
+     */
+    private var mHomeFragData: HomeFragDataBean? = null
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-//        val paramStr = arguments?.getString("param")
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        /**
+         * At this position to init test data
+         */
+        initData()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        requireActivity().window.statusBarColor = resources.getColor(R.color.yellow, null)
+    }
+
+    private fun initData() {
+        val dataStr = activity?.let { AssetsUtils.loadJsonFromAssets(it, "HomeFragData.json") }
+        mHomeFragData = dataStr?.let { GsonUtils.transformToPojo(it, HomeFragDataBean::class.java) }
     }
 
     override fun onCreateView(
@@ -59,7 +99,10 @@ class HomeFragment : Fragment() {
     }
 
     private fun loadData() {
+        mTxtTitle.text = mHomeFragData?.title ?: "Hi，吃货！"
 
+        mViewPagerBanner.adapter =
+            activity?.let { mHomeFragData?.let { data -> FoodsBannerAdapter(it, data.banner) } }
     }
 
     private fun initView(view: View) {
@@ -74,6 +117,8 @@ class HomeFragment : Fragment() {
         mBtnMy.setOnClickListener {
             onClickMyButton()
         }
+
+        mViewPagerBanner = view.findViewById(R.id.vp_foods)
     }
 
     private fun onClickMyButton() {

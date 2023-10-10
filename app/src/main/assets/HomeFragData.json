@@ -1,0 +1,32 @@
+{
+  "banner": [
+    {
+      "foodPicture": "xxxxx"
+    },
+    {
+      "foodPicture": "222222"
+    },
+    {
+      "foodPicture": "xxxxxxx"
+    }
+  ],
+  "products": [
+    {
+      "detail": "这是产品1的介绍",
+      "name": "产品1",
+      "originalPrice": "2222",
+      "picture": "1111",
+      "price": "111111",
+      "score": "5.0"
+    },
+    {
+      "detail": "这是产品2的介绍",
+      "name": "产品2",
+      "originalPrice": "2222",
+      "picture": "1111",
+      "price": "111111",
+      "score": "5.0"
+    }
+  ],
+  "title": "Hi，吃货！"
+}

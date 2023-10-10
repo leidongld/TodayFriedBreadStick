@@ -15,6 +15,9 @@ abstract class BaseActivity<V, P : BasePresenter<V>> : AppCompatActivity(), Base
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+
+
         setContentView(getLayoutId())
 
         if (mPresenter == null) {
